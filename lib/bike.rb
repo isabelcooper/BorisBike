@@ -1,7 +1,7 @@
 class Bike
-  def is_working?
+  def working?
   end
 
-  def use_bike
-  end
+#  def use_bike
+#  end
 end
