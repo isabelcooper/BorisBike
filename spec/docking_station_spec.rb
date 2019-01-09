@@ -29,7 +29,7 @@ describe DockingStation do
   end
 
   it "doesn't accept bike if DockingStation's capacity is full" do
-    @station.dock(Bike.new)
+    20.times{(@station.dock(Bike.new))}
     expect {(@station.dock(Bike.new))}.to raise_error "Capacity is full"
   end
 
