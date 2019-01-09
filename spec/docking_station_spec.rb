@@ -24,14 +24,20 @@ describe DockingStation do
   it { is_expected.to respond_to :bikes }
 
   it 'docks the bike' do
-    bike = subject.release_bike
-    subject.dock(bike)
-    expect(subject.bikes).to include(bike)
+    station = DockingStation.new
+    station.dock(bike = Bike.new)
+    expect(station.bikes).to include(bike)
   end
 
   it 'returns an error if no bikes in the docking station' do
-    docking_station = DockingStation.new
-    expect {(docking_station.release_bike)}.to raise_error "No bikes available"
+    station = DockingStation.new
+    expect {(station.release_bike)}.to raise_error "No bikes available"
   end
 
+  it 'returns the same bike that was docked' do
+    station = DockingStation.new
+    station.dock(bike = Bike.new)
+    expect(station.release_bike).to eq bike
+  end
+  
 end
