@@ -12,7 +12,11 @@ class DockingStation
   end
 
   def dock(bike)
-    @bikes.count >= 20 ? (fail "Capacity is full") : @bikes << bike
+    self.full? ? (fail "Capacity is full") : @bikes << bike
+  end
+
+  def full?
+    @bikes.count >= 20
   end
 
 end

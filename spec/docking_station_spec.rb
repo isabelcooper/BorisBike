@@ -33,5 +33,9 @@ describe DockingStation do
     expect {(@station.dock(Bike.new))}.to raise_error "Capacity is full"
   end
 
+  it 'full? method is true when station is full' do
+    20.times{(@station.dock(Bike.new))}
+    expect(@station.full?).to eq true
+  end
 
 end
