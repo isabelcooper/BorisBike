@@ -35,6 +35,17 @@ describe DockingStation do
     expect {(@station.dock(Bike.new))}.to raise_error "Capacity is full"
   end
 
+  it 'sets custom capacity' do
+    station10 = DockingStation.new(10)
+    expect(station10.capacity).to eq 10
+  end
+
+  it 'throws error on 10 if custom capacity is 10' do
+    station10 = DockingStation.new(10)
+    (station10.capacity).times{(station10.dock(Bike.new))}
+    expect {(station10.dock(Bike.new))}.to raise_error "Capacity is full"
+  end
+
 # Full method
   it 'full? method is true when station is full' do
     @default_capacity.times{(@station.dock(Bike.new))}
