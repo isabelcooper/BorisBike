@@ -5,6 +5,7 @@ describe DockingStation do
 # Dock Test
  before (:each) do
    @station = DockingStation.new
+   DockingStation.send(:public, *DockingStation.private_instance_methods)
  end
 
   it 'docks the bike' do
@@ -33,9 +34,14 @@ describe DockingStation do
     expect {(@station.dock(Bike.new))}.to raise_error "Capacity is full"
   end
 
+# Full method
   it 'full? method is true when station is full' do
     20.times{(@station.dock(Bike.new))}
     expect(@station.full?).to eq true
+  end
+
+  it 'empty? method is true when station is empty?' do
+    expect(@station.empty?).to eq true
   end
 
 end

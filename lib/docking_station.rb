@@ -8,15 +8,21 @@ class DockingStation
   end
 
   def release_bike
-   @bikes.empty? ? (fail "No bikes available") : @bikes.shift
+   empty? ? (fail "No bikes available") : @bikes.shift
   end
 
   def dock(bike)
-    self.full? ? (fail "Capacity is full") : @bikes << bike
+    full? ? (fail "Capacity is full") : @bikes << bike
   end
+
+private
 
   def full?
     @bikes.count >= 20
+  end
+
+  def empty?
+    @bikes.empty?
   end
 
 end
